@@ -6,13 +6,26 @@ openldap_server_domain_name: example.com
 #This is the password for admin for openldap 
 openldap_server_rootpw: passme
 
+
+# Options:
+#  - own: use an already present SSL certificate
+#  - generate: generate and self-sign a new SSL certificate
+#  - none: do not use SSL (not recommended)
+openldap_server_ssl: own
+
+# Generate options:
 #The self signed ssl parameters
 openldap_server_country: US
 openldap_server_state: oregon
 openldap_server_location: portland
 openldap_server_organization: IT
 
-openldap_server_enable_ssl: true
+# Own options:
+# Example for letsencrypt:
+openldap_server_ssl_cert_file: /etc/letsencrypt/live/ldap.example.com/cert.pem
+openldap_server_ssl_cert_key: /etc/letsencrypt/live/ldap.example.com/privkey.pem
+openldap_server_ssl_ca_file: /etc/letsencrypt/live/ldap.example.com/chain.pem
+openldap_server_ssl_ca_path: /user/share/ca-certificates/trust-source
 
 #The ldif file
 openldap_server_ldif: domain.ldif
