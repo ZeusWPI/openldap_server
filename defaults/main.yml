@@ -25,7 +25,7 @@ openldap_server_organization: IT
 openldap_server_ssl_cert_file: /etc/letsencrypt/live/ldap.example.com/cert.pem
 openldap_server_ssl_cert_key: /etc/letsencrypt/live/ldap.example.com/privkey.pem
 openldap_server_ssl_ca_file: /etc/letsencrypt/live/ldap.example.com/chain.pem
-openldap_server_ssl_ca_path: /user/share/ca-certificates/trust-source
+openldap_server_ssl_ca_path: /usr/share/ca-certificates/trust-source
 
 #The ldif file
 openldap_server_ldif: domain.ldif

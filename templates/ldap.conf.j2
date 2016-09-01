@@ -6,7 +6,7 @@
 # This file should be world readable but not world writable.
 
 BASE    dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
-{% if openldap_server_enable_ssl in ['own', 'generate' ] %}
+{% if openldap_server_ssl in ['own', 'generate' ] %}
 URI     ldaps://localhost
 TLS_REQCERT never
 {% else %}
@@ -16,11 +16,7 @@ URI     ldap://localhost
 #SIZELIMIT      12
 #TIMELIMIT      15
 #DEREF          never
-# TODO:
-TLS_CACERTDIR /etc/openldap/cacerts
-{% if ansible_os_family == 'RedHat' %}
-TLS_CACERT /etc/openldap/certs/cert.crt
-{% endif %}
-{% if ansible_os_family == 'Debian' %}
-TLS_CACERT /etc/ldap/certs/cert.crt
+{% if openldap_server_ssl in ['own', 'generate' ] %}
+TLS_CACERTDIR {{ openldap_server_ssl_ca_path }}
+TLS_CACERT {{ openldap_server_ssl_cert_file }}
 {% endif %}

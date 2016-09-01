@@ -26,6 +26,12 @@
     chdir: '{{ openldap_server_app_path }}/certs/'
     creates: '{{ openldap_server_app_path }}/certs/cert.crt'
 
+- set_fact:
+    openldap_server_ssl_cert_file: '{{ openldap_server_app_path }}/certs/cert.crt }}'
+    openldap_server_ssl_cert_key: '{{ openldap_server_app_path }}/certs/my.key }}'
+    openldap_server_ssl_ca_file: '{{ openldap_server_app_path }}/certs/cacert.pem }}'
+    openldap_server_ssl_ca_path: '{{ openldap_server_app_path }}/cacerts }}'
+
 - name: copy the supporting files
   copy: src=ldap dest=/etc/sysconfig/ldap mode=0755
   when: ansible_os_family == 'RedHat'
